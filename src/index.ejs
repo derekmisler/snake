@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta http-equiv="Content-Type" content="text/html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <title><%= htmlWebpackPlugin.options.title %></title>
+    <meta name="application-name" content="<%= htmlWebpackPlugin.options.title %>">
+    <% if (htmlWebpackPlugin.options.description) { %>
+    <meta name="description" content="<% htmlWebpackPlugin.options.description %>">
+    <% } %>
+
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,700i" rel="stylesheet">
+  </head>
+  <body>
+    <div id='app'></div>
+  </body>
+</html>

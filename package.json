@@ -2,14 +2,41 @@
   "name": "snake",
   "version": "1.0.0",
   "description": "Vanilla JS game of snake",
+  "author": "Derek Misler",
+  "main": "dist/index.js",
+  "license": "ISC",
   "repository": {
     "type": "git",
     "url": "https://github.com/derekmisler/snake.git"
   },
-  "main": "index.js",
   "scripts": {
-    "test": "npm run lint"
+    "test": "npm run lint",
+    "lint": "./node_modules/.bin/eslint src/**/*.js",
+    "start": "webpack-dev-server --open --watch",
+    "build": "rm -rf dist && webpack --config webpack.config.js"
   },
-  "author": "Derek Misler",
-  "license": "ISC"
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.2.1",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "clean-webpack-plugin": "^0.1.18",
+    "css-loader": "^0.28.9",
+    "eslint": "^4.17.0",
+    "eslint-loader": "^1.9.0",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "file-loader": "^1.1.6",
+    "html-webpack-plugin": "^2.30.1",
+    "node-sass": "^4.7.2",
+    "path": "^0.12.7",
+    "postcss-loader": "^2.1.0",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.20.1",
+    "url-loader": "^0.6.2",
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.11.1"
+  }
 }
