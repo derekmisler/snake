@@ -2,6 +2,10 @@
   "name": "snake",
   "version": "1.0.0",
   "description": "Vanilla JS game of snake",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/derekmisler/snake.git"
+  },
   "main": "index.js",
   "scripts": {
     "test": "npm run lint"
