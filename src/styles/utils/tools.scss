@@ -1,0 +1,7 @@
+@function getColor($selector: 'primary') {
+  @if map-has-key($colors, $selector) {
+    @return map-get($colors, $selector);
+  } @else {
+    @error "Sorry, '#{$selector}' does not exist in the $colors map.";
+  }
+};

@@ -1,7 +1,6 @@
 const path = require('path')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const CleanWebpackPlugin = require('clean-webpack-plugin')
 
 module.exports = {
   context: path.resolve(__dirname, 'src'),
@@ -13,11 +12,11 @@ module.exports = {
   },
   resolve: {
     alias: {
+      root: path.resolve(__dirname, ''),
       utils: path.resolve(__dirname, 'src/utils'),
       constants: path.resolve(__dirname, 'src/constants'),
       components: path.resolve(__dirname, 'src/components'),
-      scss: path.resolve(__dirname, 'src/assets/scss'),
-      img: path.resolve(__dirname, 'src/assets/img')
+      scss: path.resolve(__dirname, 'src/styles')
     }
   },
   module: {
@@ -60,7 +59,7 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        include: path.resolve(__dirname, 'src/assets/scss'),
+        include: path.resolve(__dirname, 'src/styles'),
         exclude: /node_modules/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
@@ -73,23 +72,6 @@ module.exports = {
             { loader: 'sass-loader' }
           ]
         })
-      },
-      {
-        test: /\.(png|svg|jpg|gif)$/,
-        include: path.resolve(__dirname, 'src/assets/img'),
-        exclude: /node_modules/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: "[path][name].[hash].[ext]",
-            },
-          },
-          {
-            loader: 'url-loader',
-            options: { limit: 8192 }
-          }
-        ]
       }
     ]
   },
@@ -99,7 +81,6 @@ module.exports = {
     port: 1212
   },
   plugins: [
-    new CleanWebpackPlugin(),
     new ExtractTextPlugin('styles.[hash].css'),
     new HtmlWebpackPlugin({
       title: 'Snake!',

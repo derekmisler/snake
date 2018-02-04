@@ -1,0 +1,15 @@
+@import '../constants/settings';
+@import '../utils/tools';
+
+.type-base {
+  font-family: $base-font-family;
+  line-height: $base-line-height;
+  color: getColor();
+}
+
+h1, h2, p, span { @extend .type-base; }
+h1, h2 { font-weight: $base-font-weight; }
+h1 { font-size: $base-font-size * 3; }
+h2 { font-size: $base-font-size * 2; }
+
+.score { color: getColor(accent); }
