@@ -1,7 +1,24 @@
-import { keyMap } from 'constants/keyboard'
+import { getStore, updateStore } from 'utils/store'
 
 export const handleKeyEvents = e => {
   const pressedKey = e.which
-  console.log(e.which, keyMap[pressedKey])
-  return keyMap[pressedKey]
+  let { snake } = getStore()
+  switch (pressedKey) {
+  case 37:
+    snake.direction = 'left'
+    break
+  case 39:
+    snake.direction = 'right'
+    break
+  case 38:
+    snake.direction = 'up'
+    break
+  case 40:
+    snake.direction = 'down'
+    break
+  default:
+    break
+  }
+  console.log(snake)
+  updateStore({ snake })
 }

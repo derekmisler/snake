@@ -1,4 +1,6 @@
 // elements for the app's structure
+import { SETTINGS } from 'constants/game'
+
 export const header = (score = 0) => {
   const a = 'a'.repeat(score + 1)
   const scoreClass = score > 0 ? 'score' : ''
@@ -7,18 +9,11 @@ export const header = (score = 0) => {
   return element
 }
 
-export const gameBoard = (config = {}) => {
-  const { width, height } = config
+export const gameBoard = () => {
   const element = document.createElement('canvas')
-  element.setAttribute('id', 'game')
+  element.setAttribute('id', SETTINGS.board.id)
   element.setAttribute('tabindex', 0)
-  element.setAttribute('height', height || 600)
-  element.setAttribute('width', width || 800)
-  return element
-}
-
-export const footer = (score = 0) => {
-  const element = document.createElement('footer')
-  element.innerHTML = `<h2>Score: <span id="score">${score}</span></h2>`
+  element.setAttribute('height', SETTINGS.board.height)
+  element.setAttribute('width', SETTINGS.board.width)
   return element
 }
