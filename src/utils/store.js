@@ -4,9 +4,9 @@ import { SETTINGS } from 'constants/game'
 export const initialState = () => {
   const { snake, food } = SETTINGS
   // Create the snake's initial size
-  snake.array = []
+  snake.body = []
   for (let i = snake.length; i > 0; i--) {
-    snake.array.push({ x: i, y: snake.size })
+    snake.body.push({ x: i, y: snake.size })
   }
   // Store any data that'll eventually change
   const store = {

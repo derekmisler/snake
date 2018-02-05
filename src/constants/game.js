@@ -3,7 +3,7 @@ const height = 600
 const snakeSize = 5
 
 export const SETTINGS = {
-  fps: 20,
+  fps: 30,
   food: {
     color: '#F38181',
     size: snakeSize,

@@ -1,9 +1,8 @@
 // Import our top-level sass file
 import 'scss/app.scss'
 // Import components
-import { header, gameBoard } from 'components/structure'
-import { renderGame } from 'components/game'
-import { renderSnake, renderNewFood } from 'components/gameElements'
+import { playGame, gameBoard } from 'components/game'
+import { renderHeader, renderSnake, renderFood } from 'components/elements'
 // Import settings
 import { SETTINGS } from 'constants/game'
 // Import helpers
@@ -13,7 +12,7 @@ import { getStore, updateStore, initialState } from 'utils/store'
 // Build initial structure/state
 updateStore()
 const element = document.getElementById('app')
-element.appendChild(header(0))
+element.appendChild(renderHeader(0))
 element.appendChild(gameBoard(SETTINGS.board.id))
 element.focus()
 const canvas = document.getElementById(SETTINGS.board.id)
@@ -24,9 +23,9 @@ window.addEventListener('keydown', handleKeyEvents)
 const run = state => {
   updateStore(state)
   renderSnake(ctx)
-  renderNewFood(ctx)
+  renderFood(ctx)
   const hereWeGo = setInterval(() => {
-    renderGame(ctx)
+    playGame(ctx)
     const { gameOver } = getStore()
     if (gameOver) {
       clearInterval(hereWeGo)
