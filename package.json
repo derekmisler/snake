@@ -5,6 +5,7 @@
   "author": "Derek Misler",
   "main": "dist/index.js",
   "license": "ISC",
+  "homepage": "https://snake-derek-misler.firebaseapp.com",
   "repository": {
     "type": "git",
     "url": "https://github.com/derekmisler/snake.git"
@@ -13,7 +14,8 @@
     "test": "npm run lint",
     "lint": "./node_modules/.bin/eslint src/**/*.js",
     "start": "webpack-dev-server --open --watch",
-    "build": "rm -rf dist && webpack --config webpack.config.js"
+    "build": "rm -rf dist && webpack --config webpack.config.js",
+    "deploy": "npm run build && firebase deploy"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",

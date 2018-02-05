@@ -2,6 +2,7 @@ const width = 800
 const height = 600
 const snakeSize = 5
 
+// Just some game settings. A lot of this will go into the inital store
 export const SETTINGS = {
   fps: 30,
   food: {

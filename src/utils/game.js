@@ -1,7 +1,9 @@
 import { SETTINGS } from 'constants/game'
 import { getStore, updateStore } from 'utils/store'
 import { renderHeader, renderFood } from 'components/elements'
+import { clearBoard } from 'components/game'
 
+// Check if the head of the snake is outside of the bounds of the board
 const snakeBoardCollision = (x, y) => {
   const hitRadius = SETTINGS.snake.size / 2
   return x < hitRadius ||
@@ -10,6 +12,7 @@ const snakeBoardCollision = (x, y) => {
          y >= SETTINGS.board.height - hitRadius
 }
 
+// Check if the head of the snake is outside of the bounds of the board
 const snakeSelfCollision = (x, y) => {
   const { snake } = getStore()
   const hitRadius = snake.size / 2
@@ -23,9 +26,11 @@ const snakeSelfCollision = (x, y) => {
   return false
 }
 
+// If either of these are true, the snake has crashed!
 export const collision = (x, y) => snakeBoardCollision(x, y) ||
                                    snakeSelfCollision(x, y)
 
+// Check if the head of the snake is within the area of the food
 export const ateFood = (x, y, size) => {
   let { food } = getStore()
   const hitRadius = (size + SETTINGS.snake.size / 2)
@@ -35,6 +40,7 @@ export const ateFood = (x, y, size) => {
          y < food.y + hitRadius
 }
 
+// If a point is scored, reset some things and update other things
 export const pointScored = (x, y, ctx) => {
   let { score, snake, food } = getStore()
   food.x = null
@@ -47,12 +53,7 @@ export const pointScored = (x, y, ctx) => {
   renderFood(ctx)
 }
 
-export const clearBoard = ctx => {
-  const { color, width, height } = SETTINGS.board
-  ctx.fillStyle = color
-  ctx.clearRect(0, 0, width, height)
-}
-
+// If the snake crashes, clear the board, reset the score, and end the game
 export const gameOver = ctx => {
   clearBoard(ctx)
   const el = document.getElementById('headline')

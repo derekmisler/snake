@@ -1,5 +1,6 @@
 import { getStore, updateStore } from 'utils/store'
 
+// Maps the key pressed with the direction of the snake
 export const handleKeyEvents = e => {
   const pressedKey = e.which
   let { snake } = getStore()
