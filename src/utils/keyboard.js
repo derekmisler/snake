@@ -19,6 +19,5 @@ export const handleKeyEvents = e => {
   default:
     break
   }
-  console.log(snake)
   updateStore({ snake })
 }

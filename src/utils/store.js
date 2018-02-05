@@ -2,14 +2,14 @@ const storeName = 'snakeStore'
 import { SETTINGS } from 'constants/game'
 
 export const initialState = () => {
-  const { fps, snake, food, board } = SETTINGS
+  const { snake, food } = SETTINGS
+  // Create the snake's initial size
   snake.array = []
-  for (let i = snake.size; i > 0; i--) {
+  for (let i = snake.length; i > 0; i--) {
     snake.array.push({ x: i, y: snake.size })
   }
+  // Store any data that'll eventually change
   const store = {
-    fps,
-    board,
     food,
     snake,
     score: 0,
@@ -22,7 +22,7 @@ export const updateStore = (newState = {}) => {
   // First, get the full store
   const store = getStore()
   // Next, merge the two
-  const newStore = { ...store, ...newState }
+  const newStore = Object.assign(store, newState)
   // Last, replace store with the updated store
   window.sessionStorage.setItem(storeName, JSON.stringify(newStore))
 }

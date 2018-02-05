@@ -1,11 +1,10 @@
-// elements for the app's structure
 import { SETTINGS } from 'constants/game'
 
 export const header = (score = 0) => {
   const a = 'a'.repeat(score + 1)
   const scoreClass = score > 0 ? 'score' : ''
   const element = document.createElement('header')
-  element.innerHTML = `<h1>Sn<span class='${scoreClass}'>${a}</span>ke!</h1>`
+  element.innerHTML = `<h1 id='headline'>Sn<span class='${scoreClass}'>${a}</span>ke!</h1>`
   return element
 }
 
